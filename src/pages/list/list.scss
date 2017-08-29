@@ -1,3 +1,22 @@
 page-list {
+    h1{
+        text-align: center;
+    }
 
+    img{
+        height: 300px !important;
+        width: 300px !important;
+    }
+
+    .color-red{
+        color: red;
+    }
+
+    .color-black{
+        color: black;
+    }
+
+    .btn-normal {
+        @include btn-normal(5px); 
+    }
 }

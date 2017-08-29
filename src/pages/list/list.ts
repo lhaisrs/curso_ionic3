@@ -1,37 +1,28 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
+
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  isClicked: boolean = false;
+  items: Array<{title: string, price: string, image: string}>;
+  login: any = 'LoginPage';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-
     // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    this.items = [{title: 'Cerveja', price: 'R$5,00', image: '../../assets/images/beer.jpg'}, {title: 'Pizza', price: 'R$4,00', image: '../../assets/images/pizza.jpg'}, 
+    {title: 'Macarronada', price: 'R$10,00', image: '../../assets/images/spaghetti.jpg'}, {title: 'Suco', price: 'R$6,00', image: '../../assets/images/juice.jpg'}];
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
+  onClicked(){
+    this.isClicked = !this.isClicked;
+  }
+
+  onExit(){
+    this.navCtrl.setRoot(this.login);
   }
 }

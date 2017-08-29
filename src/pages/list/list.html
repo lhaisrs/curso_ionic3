@@ -8,16 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <h1>
+    Meu cardápio
+  </h1>
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let item of items" (click)="onClicked()">
+      <img [src]="item.image">
+      <h2 [ngClass]="isClicked ? 'color-red': 'color-black'">{{item.title}} - {{item.price}}</h2>
+    </ion-slide>
+  </ion-slides>
+  <button ion-button (click)="onExit()" class="btn-normal">Logout</button>
 </ion-content>

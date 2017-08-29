@@ -1,3 +1,6 @@
 page-home {
 
+    .btn-normal {
+        @include btn-normal(10px); 
+    }
 }

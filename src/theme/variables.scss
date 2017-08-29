@@ -86,3 +86,9 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// Mixins
+@mixin btn-normal ($tam) {
+  border-radius: $tam !important;
+  background-color: orange !important;
+}
